@@ -2,9 +2,9 @@ import React from 'react';
 import logo from "../assets/investment-calculator-logo.png";
 export const Header = () => {
   return (
-    <div id='header'>
-        <img src={logo} alt="investment-calculator-logo" />
+    <header id='header'>
+        <img src={logo} alt="Logo showing a money bag" />
         <h1>Investment Calculator</h1>
-    </div>
+    </header>
   )
 }

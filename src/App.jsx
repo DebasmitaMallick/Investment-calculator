@@ -1,27 +1,36 @@
 import { useState } from "react"
 import { Header } from "./components/Header"
 import { UserInput } from "./components/UserInput"
+import { Table } from "./components/Table";
 
 function App() {
-  const [initialInvestment, setInitialInvestment] = useState();
-  const [annualInvestment, setAnnualInvestment] = useState();
-  const [expectedReturn, setExpectedReturn] = useState();
-  const [duration, setDuration] = useState();
+  const [userInput, setUserInput] = useState({
+    initialInvestment: 10000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
+    duration: 10
+  });
+
+  const handleChange = (inputIdentifier, newValue) => {
+    setUserInput(prevUserInput =>
+      ({
+        ...prevUserInput,
+        [inputIdentifier]: newValue
+      })
+    )
+  }
 
   return (
-    <div className="App">
+    <>
       <Header />
       <UserInput 
-        initialInvestment={initialInvestment}  
-        setInitialInvestment={setInitialInvestment}
-        annualInvestment={annualInvestment}
-        setAnnualInvestment={setAnnualInvestment}
-        expectedReturn={expectedReturn}
-        setExpectedReturn={setExpectedReturn}
-        duration={duration}
-        setDuration={setDuration}
+        userInput={userInput}
+        onChange={handleChange}
       />
-    </div>
+      <Table 
+        userInput={userInput}
+      />
+    </>
   )
 }
 
